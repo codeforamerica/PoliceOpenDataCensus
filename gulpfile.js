@@ -36,7 +36,7 @@ gulp.task('buildDev', ['bower'], function() {
     var customJs = gulp.src('./public/js/**.js')
         .pipe(gulp.dest('out/js'));
 
-    var customCss = gulp.src('.public/css/**.css')
+    var customCss = gulp.src('./public/css/**.css')
         .pipe(gulp.dest('out/css'));
 
     target.pipe(inject(series(bowerJs, customJs), {
@@ -46,6 +46,11 @@ gulp.task('buildDev', ['bower'], function() {
             ignorePath: '/out/'
         }))
         .pipe(gulp.dest('out/'));
+});
+
+
+gulp.task('watch', function() {
+    gulp.watch("public/**/*", ['buildDev']);
 });
 
 
