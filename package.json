@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-bower": "0.0.10"
+  },
+  "dependencies": {
+    "wiredep": "^2.2.2"
+  }
+}
