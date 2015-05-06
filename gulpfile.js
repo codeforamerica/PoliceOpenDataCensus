@@ -71,37 +71,37 @@ gulp.task('buildProd', ['bower', 'clean'], function() {
     var bowerJs = gulp.src(lib.ext('js').files)
         .pipe(concat('lib.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('PoliceDataCensus/js'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/js'));
 
     var bowerCss = gulp.src(lib.ext('css').files)
         .pipe(concat('lib.min.css'))
-        .pipe(gulp.dest('PoliceDataCensus/css'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/css'));
 
     var bowerWoff = gulp.src(lib.ext('woff').files)
-        .pipe(gulp.dest('PoliceDataCensus/fonts'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/fonts'));
 
     var customJs = gulp.src('./public/js/**.js')
         .pipe(concat('app.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('PoliceDataCensus/js'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/js'));
 
     var customCss = gulp.src('./public/css/**.css')
         .pipe(concat('app.min.css'))
-        .pipe(gulp.dest('PoliceDataCensus/css'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/css'));
 
     return target.pipe(inject(series(bowerJs, customJs)))
         .pipe(inject(series(bowerCss, customCss)))
-        .pipe(gulp.dest('PoliceDataCensus/'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/'));
 });
 
 
 gulp.task('gh-pages', ["buildProd"], function() {
-    return gulp.src('./PoliceDataCensus/**/*')
+    return gulp.src('./PoliceOpenDataCensus/**/*')
         .pipe(ghPages());
 });
 
 gulp.task('deploy', ["gh-pages"], function() {
-    return del.sync(['PoliceDataCensus/']);
+    return del.sync(['PoliceOpenDataCensus/']);
 });
 
 
@@ -138,9 +138,12 @@ gulp.task('readme', function() {
     console.log(" _____   _____         _____ _______ _______".red);
     console.log("|_____] |     | |        |   |       |______".red);
     console.log("|       |_____| |_____ __|__ |_____  |______".red);
-    console.log(" ______  _______ _______ _______".white);
-    console.log(" |     \\ |_____|    |    |_____|".white);
-    console.log(" |_____/ |     |    |    |     |".white);
+    console.log(" _____   _____  _______ __   _".white);
+    console.log("|     | |_____] |______ | \\  |".white);
+    console.log("|_____| |       |______ |  \\_|".white);
+    console.log("______  _______ _______ _______".white);
+    console.log("|     \\ |_____|    |    |_____|".white);
+    console.log("|_____/ |     |    |    |     |".white);
     console.log("_______ _______ __   _ _______ _     _ _______".blue);
     console.log("|       |______ | \\  | |______ |     | |______".blue);
     console.log("|_____  |______ |  \\_| ______| |_____| ______|".blue);
@@ -149,7 +152,7 @@ gulp.task('readme', function() {
     console.log();
 
     console.log("WHAT:");
-    console.log("The Police Data Census is an attempt to catalog open police accountibilty,");
+    console.log("The Police Open Data Census is an attempt to catalog open police accountibilty,");
     console.log("oversight and transparency datasets available to the public.");
     console.log();
     console.log("HOW:");
@@ -164,5 +167,4 @@ gulp.task('readme', function() {
     console.log();
     console.log("which will build the site in the 'out' directory where it can be served by")
     console.log("your static site server of choice.")
-
-})
+});
