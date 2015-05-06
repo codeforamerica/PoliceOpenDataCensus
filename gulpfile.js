@@ -58,13 +58,12 @@ gulp.task('buildDev', ['bower'], function() {
 
 
 gulp.task('watch', ['buildDev'], function() {
-
     gulp.watch("public/**/*", ['buildDev']);
 });
 
 
 
-gulp.task('publish', ['bower', 'clean'], function() {
+gulp.task('buildProd', ['bower', 'clean'], function() {
     var lib = prepBower();
 
     var target = gulp.src('./public/index.html');
@@ -96,7 +95,7 @@ gulp.task('publish', ['bower', 'clean'], function() {
 });
 
 
-gulp.task('deploy', ["publish"], function() {
+gulp.task('deploy', ["buildProd"], function() {
     return gulp.src('./PoliceDataCensus/**/*')
         .pipe(ghPages());
 });
