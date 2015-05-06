@@ -9,6 +9,7 @@ var bower = require('gulp-bower');
 var colors = require('colors');
 var taskListing = require('gulp-task-listing');
 var betterConsole = require('better-console');
+var ghPages = require('gulp-gh-pages');
 
 
 gulp.task('default', ["bower", "clean", "buildDev"]);
@@ -89,15 +90,21 @@ gulp.task('publish', ['bower', 'clean'], function() {
         .pipe(concat('app.min.css'))
         .pipe(gulp.dest('out/css'));
 
-    target.pipe(inject(series(bowerJs, customJs), {
+    return target.pipe(inject(series(bowerJs, customJs), {
             ignorePath: '/out/'
         }))
         .pipe(inject(series(bowerCss, customCss), {
             ignorePath: '/out/'
         }))
         .pipe(gulp.dest('out/'));
-
 });
+
+
+gulp.task('deploy', ["publish"], function() {
+    return gulp.src('./out/**/*')
+        .pipe(ghPages());
+});
+
 
 gulp.task('readme', function() {
     betterConsole.clear()
