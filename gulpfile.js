@@ -72,36 +72,32 @@ gulp.task('publish', ['bower', 'clean'], function() {
     var bowerJs = gulp.src(lib.ext('js').files)
         .pipe(concat('lib.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('out/js'));
+        .pipe(gulp.dest('PoliceDataCensus/js'));
 
     var bowerCss = gulp.src(lib.ext('css').files)
         .pipe(concat('lib.min.css'))
-        .pipe(gulp.dest('out/css'));
+        .pipe(gulp.dest('PoliceDataCensus/css'));
 
     var bowerWoff = gulp.src(lib.ext('woff').files)
-        .pipe(gulp.dest('out/fonts'));
+        .pipe(gulp.dest('PoliceDataCensus/fonts'));
 
     var customJs = gulp.src('./public/js/**.js')
         .pipe(concat('app.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('out/js'));
+        .pipe(gulp.dest('PoliceDataCensus/js'));
 
     var customCss = gulp.src('./public/css/**.css')
         .pipe(concat('app.min.css'))
-        .pipe(gulp.dest('out/css'));
+        .pipe(gulp.dest('PoliceDataCensus/css'));
 
-    return target.pipe(inject(series(bowerJs, customJs), {
-            ignorePath: '/out/'
-        }))
-        .pipe(inject(series(bowerCss, customCss), {
-            ignorePath: '/out/'
-        }))
-        .pipe(gulp.dest('out/'));
+    return target.pipe(inject(series(bowerJs, customJs)))
+        .pipe(inject(series(bowerCss, customCss)))
+        .pipe(gulp.dest('PoliceDataCensus/'));
 });
 
 
 gulp.task('deploy', ["publish"], function() {
-    return gulp.src('./out/**/*')
+    return gulp.src('./PoliceDataCensus/**/*')
         .pipe(ghPages());
 });
 

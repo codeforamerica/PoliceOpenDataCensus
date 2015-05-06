@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/PoliceDataCensus/css/lib.min.css">
+    <link rel="stylesheet" href="/PoliceDataCensus/css/app.min.css">
+    <!-- endinject -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Police Data Census</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 col-sm-3 col-md-2 sidebar">
+                <div class="nav nav-sidebar">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseDepartments" aria-expanded="false" aria-controls="collapseDepartments">
+          Departments
+        </a>
+      </h4>
+                            </div>
+                            <div id="collapseDepartments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="list-group">
+                                    <ul id="departments" class="list-group">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTypes" aria-expanded="true" aria-controls="collapseTypes">
+          Types of Data
+        </a>
+      </h4>
+                            </div>
+                            <div id="collapseTypes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="list-group">
+                                    <ul id="datatypes" class="list-group">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-10 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div class="alert alert-info" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <p>This is a survey of currently available open datasets about police interactions with citizens in the US, such as Use of Force, Officer-Involved Shootings, and Complaints against Police.</p>
+                    <p>Created by the 2015 Code for America Fellows for Indianapolis <a href="www.codeforamerica.org/governments/indianapolis/">www.codeforamerica.org/governments/indianapolis/</a></p>
+                    <p>Feedback welcome to <a href="mailto:indy@codeforamerica.org">indy@codeforamerica.org</a></p>
+                </div>
+            </div>
+            <div id="cards" class="col-xs-10 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 mains">
+            </div>
+        </div>
+    </div>
+    <script id="department-template" type="text/x-handlebars-template">
+        <li class="list-group-item" onClick="filterByDepartment('{{City}}')">{{City}}</li>
+    </script>
+    <script id="datatype-template" type="text/x-handlebars-template">
+        <li class="list-group-item" onClick="filterByDatatype('{{[Type of Data]}}' )">{{[Type of Data]}}</li>
+    </script>
+    <script id="card-template" type="text/x-handlebars-template">
+        <div class="panel panel-default">
+            <div class="panel-heading department-title-heading">
+                <h1 class="department-title">{{City}} – {{"Type of Data"}}</h1>
+            </div>
+            <div class="panel-body">
+                <p><b>Description: </b>{{Description}}</p>
+                <p><b>Content Available:</b>{{"Content Available"}}</p>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p><b>Machine Readable: </b>{{"Machine Readable?"}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p><b>Update Frequency: </b>{{"Update frequency"}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Fields: </b>{{"Fields Included"}}</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p><b>Download Formats: </b>{{"Available downloads"}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p><b>Data timeline: </b>{{"Data timeline"}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href={{Link}}>{{Link}}</a>
+                </br>
+                <small>This summary last updated: {{"Row last updated"}}</small>
+            </div>
+        </div>
+    </script>
+    <!-- inject:js -->
+    <script src="/PoliceDataCensus/js/lib.min.js"></script>
+    <script src="/PoliceDataCensus/js/app.min.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
