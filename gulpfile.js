@@ -6,8 +6,15 @@ var inject = require('gulp-inject');
 var series = require('stream-series');
 var del = require('del');
 var bower = require('gulp-bower');
+var colors = require('colors');
+var taskListing = require('gulp-task-listing');
+var betterConsole = require('better-console');
+
 
 gulp.task('default', ["bower", "clean", "buildDev"]);
+
+
+gulp.task('help', taskListing);
 
 
 gulp.task('bower', function() {
@@ -91,3 +98,65 @@ gulp.task('publish', ['bower', 'clean'], function() {
         .pipe(gulp.dest('out/'));
 
 });
+
+gulp.task('readme', function() {
+    betterConsole.clear()
+
+    console.log("Part of:");
+    console.log("___  ____ ____  _ ____ ____ ___    ____ ____ _  _ ___  ____ ____ ___");
+    console.log("|__] |__/ |  |  | |___ |     |     |    |  | |\\/| |__] |  | |__/  | ");
+    console.log("|    |  \\ |__| _| |___ |___  |     |___ |__| |  | |    |__| |  \\  | ");
+    console.log();
+    console.log();
+
+    console.log("From:")
+    console.log("____ ____ ___  ____    ____ ____ ____    ____ _  _ ____ ____ _ ____ ____")
+    console.log("|    |  | |  \\ |___    |___ |  | |__/    |__| |\\/| |___ |__/ | |    |__|")
+    console.log("|___ |__| |__/ |___    |    |__| |  \\    |  | |  | |___ |  \\ | |___ |  |")
+    console.log();
+
+
+    console.log("                        / ::::=======    / \\                            ".blue);
+    console.log("                       /  ::::=======   /   \\                           ".blue);
+    console.log("                       \\  ===========  /    /                           ".blue);
+    console.log("                        \\ =========== /    /                            ".blue);
+    console.log();;
+    console.log("And:");
+    console.log("___ ____ ____ _  _    _ _  _ ___  _   _");
+    console.log(" |  |___ |__| |\\/|    | |\\ | |  \\  \\_/");
+    console.log(" |  |___ |  | |  |    | | \\| |__/   |");
+
+    console.log();
+
+    console.log("______________________________________________".red);
+    console.log(" _____   _____         _____ _______ _______".red);
+    console.log("|_____] |     | |        |   |       |______".red);
+    console.log("|       |_____| |_____ __|__ |_____  |______".red);
+    console.log(" ______  _______ _______ _______".white);
+    console.log(" |     \\ |_____|    |    |_____|".white);
+    console.log(" |_____/ |     |    |    |     |".white);
+    console.log("_______ _______ __   _ _______ _     _ _______".blue);
+    console.log("|       |______ | \\  | |______ |     | |______".blue);
+    console.log("|_____  |______ |  \\_| ______| |_____| ______|".blue);
+    console.log("______________________________________________".blue);
+    console.log();
+    console.log();
+
+    console.log("WHAT:");
+    console.log("The Police Data Census is an attempt to catalog open police accountibilty,");
+    console.log("oversight and transparency datasets available to the public.");
+    console.log();
+    console.log("HOW:");
+    console.log("The Census is built on a Google Spreadsheet integration though tabletop.js.");
+    console.log("The Spreadsheet currently available is an inflight proof of concept that is");
+    console.log("not complete and libable to change greatly as new information comes in. The");
+    console.log("site is otherwise a fairly bogstandard bootstrap/jquery build. All that");
+    console.log("should be required to get the development environment up is:");
+    console.log();
+    console.log("                       npm install")
+    console.log("                       gulp")
+    console.log();
+    console.log("which will build the site in the 'out' directory where it can be served by")
+    console.log("your static site server of choice.")
+
+})
