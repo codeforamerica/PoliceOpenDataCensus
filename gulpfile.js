@@ -56,17 +56,38 @@ gulp.task('watch', ['buildDev'], function() {
 
 
 
-// gulp.task('publish', function() {
-//     gulp.src(lib.ext('js').files)
-//         .pipe(concat('lib.min.js'))
-//         .pipe(uglify())
-//         .pipe(gulp.dest('public/js'));
+gulp.task('publish', ['bower', 'clean'], function() {
+    var lib = prepBower();
 
-//     gulp.src(lib.ext('css').files)
-//         .pipe(concat('lib.min.css'))
-//         .pipe(gulp.dest('public/css'));
+    var target = gulp.src('./public/index.html');
 
-//     gulp.src(lib.ext('woff').files)
-//         .pipe(gulp.dest('public/fonts'));
+    var bowerJs = gulp.src(lib.ext('js').files)
+        .pipe(concat('lib.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('out/js'));
 
-// });
+    var bowerCss = gulp.src(lib.ext('css').files)
+        .pipe(concat('lib.min.css'))
+        .pipe(gulp.dest('out/css'));
+
+    var bowerWoff = gulp.src(lib.ext('woff').files)
+        .pipe(gulp.dest('out/fonts'));
+
+    var customJs = gulp.src('./public/js/**.js')
+        .pipe(concat('app.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('out/js'));
+
+    var customCss = gulp.src('./public/css/**.css')
+        .pipe(concat('app.min.css'))
+        .pipe(gulp.dest('out/css'));
+
+    target.pipe(inject(series(bowerJs, customJs), {
+            ignorePath: '/out/'
+        }))
+        .pipe(inject(series(bowerCss, customCss), {
+            ignorePath: '/out/'
+        }))
+        .pipe(gulp.dest('out/'));
+
+});
