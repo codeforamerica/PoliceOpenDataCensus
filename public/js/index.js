@@ -51,8 +51,26 @@
 
      $.each(departments, function(i, department) {
          var html = template(department);
-         $("#departments").append(html);
+         $(html).appendTo("#departments");
      })
+ }
+
+ function clearCards() {
+     $("#cards").empty();
+ }
+
+ function filterByDepartment(department) {
+     clearCards();
+     updateCards(_.filter(allRows, function(row) {
+         return row["City"] === department;
+     }))
+ }
+
+ function filterByDatatype(datatype) {
+     clearCards();
+     updateCards(_.filter(allRows, function(row) {
+         return row["Type of Data"] === datatype;
+     }))
  }
 
  function updateTypesOfData(types) {
@@ -61,6 +79,6 @@
 
      $.each(types, function(i, type) {
          var html = template(type);
-         $("#datatypes").append(html);
+         $(html).appendTo("#datatypes");
      })
  }

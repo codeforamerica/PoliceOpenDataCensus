@@ -76,10 +76,10 @@
         </div>
     </div>
     <script id="department-template" type="text/x-handlebars-template">
-        <li class="list-group-item">{{City}}</li>
+        <li class="list-group-item" onClick="filterByDepartment('{{City}}')">{{City}}</li>
     </script>
     <script id="datatype-template" type="text/x-handlebars-template">
-        <li class="list-group-item">{{"Type of Data"}}</li>
+        <li class="list-group-item" onClick="filterByDatatype('{{[Type of Data]}}' )">{{[Type of Data]}}</li>
     </script>
     <script id="card-template" type="text/x-handlebars-template">
         <div class="panel panel-default">

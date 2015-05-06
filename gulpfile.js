@@ -49,7 +49,8 @@ gulp.task('buildDev', ['bower'], function() {
 });
 
 
-gulp.task('watch', function() {
+gulp.task('watch', ['buildDev'], function() {
+
     gulp.watch("public/**/*", ['buildDev']);
 });
 
