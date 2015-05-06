@@ -26,7 +26,7 @@
      updateTypesOfData(_.chain(allRows)
          .map(
              function(row) {
-                 return row["Type of Data"]
+                 return row["Type of Data"];
              }).unique().map(function(type) {
              return {
                  "Type of Data": type

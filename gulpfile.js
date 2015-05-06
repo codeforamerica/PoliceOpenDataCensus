@@ -95,9 +95,13 @@ gulp.task('buildProd', ['bower', 'clean'], function() {
 });
 
 
-gulp.task('deploy', ["buildProd"], function() {
+gulp.task('gh-pages', ["buildProd"], function() {
     return gulp.src('./PoliceDataCensus/**/*')
         .pipe(ghPages());
+});
+
+gulp.task('deploy', ["gh-pages"], function() {
+    return del.sync(['PoliceDataCensus/']);
 });
 
 
