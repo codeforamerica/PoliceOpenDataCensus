@@ -162,9 +162,13 @@ gulp.task('readme', function() {
     console.log("site is otherwise a fairly bogstandard bootstrap/jquery build. All that");
     console.log("should be required to get the development environment up is:");
     console.log();
-    console.log("                       npm install")
     console.log("                       gulp")
     console.log();
     console.log("which will build the site in the 'out' directory where it can be served by")
-    console.log("your static site server of choice.")
+    console.log("your static site server of choice. If you're going to be working on the site,")
+    console.log();
+    console.log("                       gulp watch")
+    console.log();
+    console.log("will watch changes to the 'public' directory and keep the 'out' directory up")
+    console.log("to date.")
 });
