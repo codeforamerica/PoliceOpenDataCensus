@@ -13,6 +13,7 @@
     "tabletop": "~1.4.0",
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.4",
-    "handlebars": "~3.0.3"
+    "handlebars": "~3.0.3",
+    "underscore": "~1.8.3"
   }
 }

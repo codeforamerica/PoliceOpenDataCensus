@@ -28,21 +28,12 @@ body {
 /* Hide for mobile, show later */
 
 .sidebar {
-    .sidebar {
-        position: fixed;
-        top: 51px;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        display: block;
-        padding: 20px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        /* Scrollable contents if viewport is shorter than content. */
-        
-        background-color: #f5f5f5;
-        border-right: 1px solid #eee;
-    }
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+    min-height: 500px;
+    border-bottom: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
 @media (min-width: 768px) {
