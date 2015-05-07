@@ -9,7 +9,8 @@
  var allRows = [];
 
  function showInfo(data, tabletop) {
-     allRows = tabletop.sheets("Sheet1").all();
+     allRows = _.sortBy(tabletop.sheets("Sheet1").all(), "City");
+
      updateCards(allRows);
 
      updateDepartments(_.chain(allRows)
