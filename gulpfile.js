@@ -157,9 +157,9 @@ gulp.task('readme', function() {
     console.log();
     console.log("HOW:");
     console.log("The Census is built on a Google Spreadsheet integration though tabletop.js.");
-    console.log("The Spreadsheet currently available is an inflight proof of concept that is");
-    console.log("not complete and libable to change greatly as new information comes in. The");
-    console.log("site is otherwise a fairly bogstandard bootstrap/jquery build. All that");
+    console.log("Feedback and suggested additions to the current data are more than welcome");
+    console.log("at indy@codeforamerica.org.");
+    console.log("The site is otherwise a fairly bogstandard bootstrap/jquery build. All that");
     console.log("should be required to get the development environment up is:");
     console.log();
     console.log("                       gulp")
@@ -171,4 +171,8 @@ gulp.task('readme', function() {
     console.log();
     console.log("will watch changes to the 'public' directory and keep the 'out' directory up")
     console.log("to date.")
+    console.log("To minifiy and concat resouces then publish the site to gh-pages:")
+    console.log();
+    console.log("                       gulp deploy")
+    console.log();
 });
