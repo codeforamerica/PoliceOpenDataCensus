@@ -1,6 +1,6 @@
  $(document).ready(function() {
      Tabletop.init({
-         key: "177LptTs3sQI7JLMD5Js77v7jQyVw3g8NIu1U3JQMcpQ",
+         key: "1lv74SigFdFMJvza_dc2tBVd37r9E4-CPeY9YkRSaBxA",
          callback: showInfo,
          parseNumbers: true
      });
@@ -9,7 +9,7 @@
  var allRows = [];
 
  function showInfo(data, tabletop) {
-     allRows = _.sortBy(tabletop.sheets("Sheet1").all(), "City");
+     allRows = _.sortBy(tabletop.sheets("Completed Data").all(), "City");
 
      updateCards(allRows);
 
