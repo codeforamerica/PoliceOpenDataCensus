@@ -9,7 +9,7 @@
  var allRows = [];
 
  function showInfo(data, tabletop) {
-     allRows = _.sortBy(tabletop.sheets("Completed Data").all(), "City");
+     allRows = _.sortBy(tabletop.sheets("Completed Detailed Data").all(), "City");
 
      updateCards(allRows);
 
