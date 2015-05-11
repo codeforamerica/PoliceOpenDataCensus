@@ -36,21 +36,21 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Deparments <span class="caret"></span></a>
                         <ul class="dropdown-menu" id="departments" role="menu">
-                            <li><a onClick="resetSearch()">All</a></li>
+                            <li><a href="#" onClick="resetSearch()">All</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Types of Data <span class="caret"></span></a>
                         <ul class="dropdown-menu" id="datatypes" role="menu">
-                            <li><a onClick="resetSearch()">All</a></li>
+                            <li><a href="#" onClick="resetSearch()">All</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Machine Readable <span class="caret"></span></a>
                         <ul class="dropdown-menu" id="datatypes" role="menu">
-                            <li><a onClick="resetSearch()">All</a></li>
-                            <li><a onClick="filterByMachineReadable(true)">Yes</a></li>
-                            <li><a onClick="filterByMachineReadable(false)">No</a></li>
+                            <li><a href="#" onClick="resetSearch()">All</a></li>
+                            <li><a href="#" onClick="filterByMachineReadable(true)">Yes</a></li>
+                            <li><a href="#" onClick="filterByMachineReadable(false)">No</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -72,10 +72,10 @@
         </div>
     </div>
     <script id="department-template" type="text/x-handlebars-template">
-        <li><a onClick="filterByDepartment('{{City}}')">{{City}}</a></li>
+        <li><a href="#" onClick="filterByDepartment('{{City}}')">{{City}}</a></li>
     </script>
     <script id="datatype-template" type="text/x-handlebars-template">
-        <li><a onClick="filterByDatatype('{{[Type of Data]}}' )">{{[Type of Data]}}</a></li>
+        <li><a href="#" onClick="filterByDatatype('{{[Type of Data]}}' )">{{[Type of Data]}}</a></li>
     </script>
     <script id="card-template" type="text/x-handlebars-template">
         <div class="panel panel-default">
