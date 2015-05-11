@@ -67,10 +67,22 @@
      }))
  }
 
+ function resetSearch() {
+     clearCards();
+     updateCards(allRows);
+ }
+
  function filterByDatatype(datatype) {
      clearCards();
      updateCards(_.filter(allRows, function(row) {
          return row["Type of Data"] === datatype;
+     }))
+ }
+
+ function filterByMachineReadable(machineReadable) {
+     clearCards();
+     updateCards(_.filter(allRows, function(row) {
+         return machineReadable ? row["Machine Readable?"] === "Yes" : row["Machine Readable?"] === "No";
      }))
  }
 
