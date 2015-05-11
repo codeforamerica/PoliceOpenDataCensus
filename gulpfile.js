@@ -11,7 +11,13 @@ var taskListing = require('gulp-task-listing');
 var betterConsole = require('better-console');
 var ghPages = require('gulp-gh-pages');
 var connect = require('gulp-connect');
+var print = require('gulp-print');
 
+var underscore = require('underscore');
+
+
+
+var modules = ["index", "grid"];
 
 gulp.task('default', ["bower", "clean", "buildDev"]);
 
@@ -28,34 +34,36 @@ gulp.task('clean', function() {
     return del.sync(['out/']);
 });
 
-gulp.task('buildDev', ['bower'], function() {
+gulp.task('buildDev', ['bower', "clean"], function() {
     var lib = prepBower();
 
-    var target = gulp.src('./public/index.html');
-
     var bowerJs = gulp.src(lib.ext('js').files)
-        .pipe(gulp.dest('out/js'));
+        .pipe(gulp.dest('out/common/js'));
 
     var bowerCss = gulp.src(lib.ext('css').files)
-        .pipe(gulp.dest('out/css'));
+        .pipe(gulp.dest('out/common/css'));
 
     var bowerWoff = gulp.src(lib.ext('woff').files)
-        .pipe(gulp.dest('out/fonts'));
+        .pipe(gulp.dest('out/common/fonts'));
 
-    var customJs = gulp.src('./public/js/**.js')
-        .pipe(gulp.dest('out/js'));
+    underscore.each(modules, function(module) {
+        var target = gulp.src('./public/' + module + '/*.html');
 
-    var customCss = gulp.src('./public/css/**.css')
-        .pipe(gulp.dest('out/css'));
+        var customJs = gulp.src('./public/' + module + '/js/**.js')
+            .pipe(gulp.dest('out/' + module + '/js'));
 
-    target.pipe(inject(series(bowerJs, customJs), {
-            ignorePath: '/out/'
-        }))
-        .pipe(inject(series(bowerCss, customCss), {
-            ignorePath: '/out/'
-        }))
-        .pipe(gulp.dest('out/'))
-        .pipe(connect.reload());
+        var customCss = gulp.src('./public/' + module + '/css/**.css')
+            .pipe(gulp.dest('out/' + module + '/css'));
+
+        target.pipe(inject(series(bowerJs, customJs), {
+                ignorePath: '/out/'
+            }))
+            .pipe(inject(series(bowerCss, customCss), {
+                ignorePath: '/out/'
+            }))
+            .pipe(gulp.dest('out/'))
+            .pipe(connect.reload());
+    });
 });
 
 
@@ -76,32 +84,36 @@ gulp.task('devServer', ['connect', 'watch'])
 gulp.task('buildProd', ['bower'], function() {
     var lib = prepBower();
 
-    var target = gulp.src('./public/index.html');
 
     var bowerJs = gulp.src(lib.ext('js').files)
         .pipe(concat('lib.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('PoliceOpenDataCensus/js'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/common/js'));
 
     var bowerCss = gulp.src(lib.ext('css').files)
         .pipe(concat('lib.min.css'))
-        .pipe(gulp.dest('PoliceOpenDataCensus/css'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/common/css'));
 
     var bowerWoff = gulp.src(lib.ext('woff').files)
-        .pipe(gulp.dest('PoliceOpenDataCensus/fonts'));
+        .pipe(gulp.dest('PoliceOpenDataCensus/common/fonts'));
 
-    var customJs = gulp.src('./public/js/**.js')
-        .pipe(concat('app.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('PoliceOpenDataCensus/js'));
+    underscore.each(modules, function(module) {
+        var target = gulp.src('./public/' + module + '/*.html');
 
-    var customCss = gulp.src('./public/css/**.css')
-        .pipe(concat('app.min.css'))
-        .pipe(gulp.dest('PoliceOpenDataCensus/css'));
+        var customJs = gulp.src('./public/' + module + '/js/**.js')
+            .pipe(concat('app.min.js'))
+            .pipe(uglify())
+            .pipe(gulp.dest('PoliceOpenDataCensus/' + module + '/js'));
 
-    return target.pipe(inject(series(bowerJs, customJs)))
-        .pipe(inject(series(bowerCss, customCss)))
-        .pipe(gulp.dest('PoliceOpenDataCensus/'));
+        var customCss = gulp.src('./public/' + module + '/css/**.css')
+            .pipe(concat('app.min.css'))
+            .pipe(gulp.dest('PoliceOpenDataCensus/' + module + '/css'));
+
+        target.pipe(inject(series(bowerJs, customJs)))
+            .pipe(inject(series(bowerCss, customCss)))
+            .pipe(gulp.dest('PoliceOpenDataCensus/'))
+            .pipe(connect.reload());
+    });
 });
 
 
