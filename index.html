@@ -23,49 +23,43 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-contents">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="#">Police Open Data Census</a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-contents">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Deparments <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="departments" role="menu">
+                            <li><a onClick="resetSearch()">All</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Types of Data <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="datatypes" role="menu">
+                            <li><a onClick="resetSearch()">All</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Machine Readable <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="datatypes" role="menu">
+                            <li><a onClick="resetSearch()">All</a></li>
+                            <li><a onClick="filterByMachineReadable(true)">Yes</a></li>
+                            <li><a onClick="filterByMachineReadable(false)">No</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-2 col-sm-3 col-md-2 sidebar">
-                <div class="nav nav-sidebar">
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseDepartments" aria-expanded="false" aria-controls="collapseDepartments">
-          Departments
-        </a>
-      </h4>
-                            </div>
-                            <div id="collapseDepartments" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="list-group">
-                                    <ul id="departments" class="list-group">
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTypes" aria-expanded="true" aria-controls="collapseTypes">
-          Types of Data
-        </a>
-      </h4>
-                            </div>
-                            <div id="collapseTypes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="list-group">
-                                    <ul id="datatypes" class="list-group">
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-10 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 main">
                 <div class="alert alert-info" role="alert">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     <p>This is a census of currently available open datasets about police interactions with citizens in the US, including Use of Force, Officer-Involved Shootings, and Complaints Against Police.</p>
@@ -73,15 +67,15 @@
                     <p>Feedback welcome to <a href="mailto:indy@codeforamerica.org">indy@codeforamerica.org</a> – please let us know about other related data sets to add.</p>
                 </div>
             </div>
-            <div id="cards" class="col-xs-10 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 mains">
+            <div id="cards" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 main">
             </div>
         </div>
     </div>
     <script id="department-template" type="text/x-handlebars-template">
-        <li class="list-group-item clickable" onClick="filterByDepartment('{{City}}')">{{City}}</li>
+        <li><a onClick="filterByDepartment('{{City}}')">{{City}}</a></li>
     </script>
     <script id="datatype-template" type="text/x-handlebars-template">
-        <li class="list-group-item clickable" onClick="filterByDatatype('{{[Type of Data]}}' )">{{[Type of Data]}}</li>
+        <li><a onClick="filterByDatatype('{{[Type of Data]}}' )">{{[Type of Data]}}</a></li>
     </script>
     <script id="card-template" type="text/x-handlebars-template">
         <div class="panel panel-default">
