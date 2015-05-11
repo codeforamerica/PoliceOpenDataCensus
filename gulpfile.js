@@ -63,7 +63,7 @@ gulp.task('watch', ['buildDev'], function() {
 
 
 
-gulp.task('buildProd', ['bower', 'clean'], function() {
+gulp.task('buildProd', ['bower'], function() {
     var lib = prepBower();
 
     var target = gulp.src('./public/index.html');
