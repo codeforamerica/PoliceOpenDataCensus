@@ -10,6 +10,7 @@ var colors = require('colors');
 var taskListing = require('gulp-task-listing');
 var betterConsole = require('better-console');
 var ghPages = require('gulp-gh-pages');
+var connect = require('gulp-connect');
 
 
 gulp.task('default', ["bower", "clean", "buildDev"]);
@@ -53,7 +54,8 @@ gulp.task('buildDev', ['bower'], function() {
         .pipe(inject(series(bowerCss, customCss), {
             ignorePath: '/out/'
         }))
-        .pipe(gulp.dest('out/'));
+        .pipe(gulp.dest('out/'))
+        .pipe(connect.reload());
 });
 
 
@@ -61,7 +63,15 @@ gulp.task('watch', ['buildDev'], function() {
     gulp.watch("public/**/*", ['buildDev']);
 });
 
+gulp.task('connect', function() {
+    connect.server({
+        root: 'out',
+        port: 8000,
+        livereload: true
+    });
+});
 
+gulp.task('devServer', ['connect', 'watch'])
 
 gulp.task('buildProd', ['bower'], function() {
     var lib = prepBower();
@@ -167,10 +177,10 @@ gulp.task('readme', function() {
     console.log("which will build the site in the 'out' directory where it can be served by")
     console.log("your static site server of choice. If you're going to be working on the site,")
     console.log();
-    console.log("                       gulp watch")
+    console.log("                       gulp devServer")
     console.log();
-    console.log("will watch changes to the 'public' directory and keep the 'out' directory up")
-    console.log("to date.")
+    console.log("will watch changes to the 'public' directory, serve a live updating version of")
+    console.log("the site at localhost:8000 and live refresh when changes occur.")
     console.log("To minifiy and concat resouces then publish the site to gh-pages:")
     console.log();
     console.log("                       gulp deploy")
