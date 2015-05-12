@@ -12,23 +12,17 @@ var betterConsole = require('better-console');
 var ghPages = require('gulp-gh-pages');
 var connect = require('gulp-connect');
 var print = require('gulp-print');
-
 var underscore = require('underscore');
-
-
 
 var modules = ["index", "grid"];
 
 gulp.task('default', ["bower", "clean", "buildDev"]);
 
-
 gulp.task('help', taskListing);
-
 
 gulp.task('bower', function() {
     return bower().pipe(gulp.dest('bower_components/'))
 });
-
 
 gulp.task('clean', function() {
     return del.sync(['out/']);
@@ -65,7 +59,6 @@ gulp.task('buildDev', ['bower', "clean"], function() {
             .pipe(connect.reload());
     });
 });
-
 
 gulp.task('watch', ['buildDev'], function() {
     gulp.watch("public/**/*", ['buildDev']);
@@ -129,21 +122,17 @@ gulp.task('deploy', ["gh-pages"], function() {
 
 gulp.task('readme', function() {
     betterConsole.clear()
-
     console.log("Part of:");
     console.log("___  ____ ____  _ ____ ____ ___    ____ ____ _  _ ___  ____ ____ ___");
     console.log("|__] |__/ |  |  | |___ |     |     |    |  | |\\/| |__] |  | |__/  | ");
     console.log("|    |  \\ |__| _| |___ |___  |     |___ |__| |  | |    |__| |  \\  | ");
     console.log();
     console.log();
-
     console.log("From:")
     console.log("____ ____ ___  ____    ____ ____ ____    ____ _  _ ____ ____ _ ____ ____")
     console.log("|    |  | |  \\ |___    |___ |  | |__/    |__| |\\/| |___ |__/ | |    |__|")
     console.log("|___ |__| |__/ |___    |    |__| |  \\    |  | |  | |___ |  \\ | |___ |  |")
     console.log();
-
-
     console.log("                        / ::::=======    / \\                            ".blue);
     console.log("                       /  ::::=======   /   \\                           ".blue);
     console.log("                       \\  ===========  /    /                           ".blue);
@@ -153,9 +142,7 @@ gulp.task('readme', function() {
     console.log("___ ____ ____ _  _    _ _  _ ___  _   _");
     console.log(" |  |___ |__| |\\/|    | |\\ | |  \\  \\_/");
     console.log(" |  |___ |  | |  |    | | \\| |__/   |");
-
     console.log();
-
     console.log("______________________________________________".red);
     console.log(" _____   _____         _____ _______ _______".red);
     console.log("|_____] |     | |        |   |       |______".red);
@@ -172,7 +159,6 @@ gulp.task('readme', function() {
     console.log("______________________________________________".blue);
     console.log();
     console.log();
-
     console.log("WHAT:");
     console.log("The Police Open Data Census is an attempt to catalog open police accountibilty,");
     console.log("oversight and transparency datasets available to the public.");
