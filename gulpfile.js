@@ -90,7 +90,7 @@ gulp.task('buildProd', ['bower'], function() {
     var bowerWoff = gulp.src(lib.ext('woff').files)
         .pipe(gulp.dest('PoliceOpenDataCensus/common/fonts'));
 
-    underscore.each(modules, function(module) {
+    return underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
 
         var customJs = gulp.src('./public/' + module + '/js/**.js')
