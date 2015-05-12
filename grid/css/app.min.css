@@ -42,14 +42,14 @@ body {
 }
 
 .datapoles {
-    width: 50px;
+    width: 65px;
     margin: auto;
     padding-left: 0;
 }
 
 .datapole {
     display: inline-block;
-    width: 5px;
+    width: 7px;
     height: 20px;
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
