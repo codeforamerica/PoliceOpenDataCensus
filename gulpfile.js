@@ -13,6 +13,7 @@ var ghPages = require('gulp-gh-pages');
 var connect = require('gulp-connect');
 var print = require('gulp-print');
 var underscore = require('underscore');
+var merge = require('merge-stream');
 
 var modules = ["index", "grid"];
 
@@ -90,7 +91,7 @@ gulp.task('buildProd', ['bower'], function() {
     var bowerWoff = gulp.src(lib.ext('woff').files)
         .pipe(gulp.dest('PoliceOpenDataCensus/common/fonts'));
 
-    return underscore.map(modules, function(module) {
+    return merge(underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
 
         var customJs = gulp.src('./public/' + module + '/js/**.js')
@@ -102,11 +103,11 @@ gulp.task('buildProd', ['bower'], function() {
             .pipe(concat('app.min.css'))
             .pipe(gulp.dest('PoliceOpenDataCensus/' + module + '/css'));
 
-        target.pipe(inject(series(bowerJs, customJs)))
+        return target.pipe(inject(series(bowerJs, customJs)))
             .pipe(inject(series(bowerCss, customCss)))
             .pipe(gulp.dest('PoliceOpenDataCensus/'))
             .pipe(connect.reload());
-    });
+    }));
 });
 
 
