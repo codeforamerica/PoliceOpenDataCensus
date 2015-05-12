@@ -63,18 +63,22 @@
     <script id="department-template" type="text/x-handlebars-template">
         <tr>
             <td>
+                <a href="{{departmentHref}}">
                 {{department}}
+                </a>
             </td>
             {{#each this.datasets}}
             <td>
-                <ul class="datapoles">
-                    <li class="datapole {{free}}"></li>
-                    <li class="datapole {{machine}}"></li>
-                    <li class="datapole {{context}}"></li>
-                    <li class="datapole {{bulk}}"></li>
-                    <li class="datapole {{fresh}}"></li>
-                    <li class="datapole {{incident}}"></li>
-                </ul>
+                <a href="{{datasetHref}}">
+                    <ul class="datapoles">
+                        <li class="datapole {{free}}"></li>
+                        <li class="datapole {{machine}}"></li>
+                        <li class="datapole {{context}}"></li>
+                        <li class="datapole {{bulk}}"></li>
+                        <li class="datapole {{fresh}}"></li>
+                        <li class="datapole {{incident}}"></li>
+                    </ul>
+                </a>
             </td>
             {{/each}}
         </tr>
@@ -83,7 +87,9 @@
         <tr>
             <th>Department</th>
             {{#each this}}
-            <th>{{this}}</th>
+            <th> <a href="{{datatypeHref}}">
+                {{datatype}}
+                </a></th>
             {{/each}}
         </tr>
     </script>
