@@ -18,6 +18,75 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-contents">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Police Open Data Census</a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-contents">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/index.html">All Datasets</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+                <div class="alert alert-info" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <p>This is a census of currently available open datasets about police interactions with citizens in the US, including Use of Force, Officer-Involved Shootings, and Complaints Against Police.</p>
+                    <p>Created by the 2015 Code for America Fellows for Indianapolis <a href="www.codeforamerica.org/governments/indianapolis/">www.codeforamerica.org/governments/indianapolis/</a></p>
+                    <p>Feedback welcome to <a href="mailto:indy@codeforamerica.org">indy@codeforamerica.org</a> – please let us know about other related data sets to add.</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead id="datasets">
+                        </thead>
+                        <tbody id="departments">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="department-template" type="text/x-handlebars-template">
+        <tr>
+            <td>
+                {{department}}
+            </td>
+            {{#each this.datasets}}
+            <td>
+                <ul class="datapoles">
+                    <li class="datapole {{free}}"></li>
+                    <li class="datapole {{machine}}"></li>
+                    <li class="datapole {{context}}"></li>
+                    <li class="datapole {{bulk}}"></li>
+                    <li class="datapole {{fresh}}"></li>
+                    <li class="datapole {{incident}}"></li>
+                </ul>
+            </td>
+            {{/each}}
+        </tr>
+    </script>
+    <script id="dataset-template" type="text/x-handlebars-template">
+        <tr>
+            <th>Department</th>
+            {{#each this}}
+            <th>{{this}}</th>
+            {{/each}}
+        </tr>
+    </script>
     <!-- inject:js -->
     <!-- endinject -->
 </body>

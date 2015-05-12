@@ -1,0 +1,77 @@
+/*
+ * Base structure
+ */
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body {
+    padding-top: 50px;
+}
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+
+.navbar-fixed-top {
+    border: 0;
+}
+/*
+ * Main content
+ */
+
+.main {
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+
+.main .page-header {
+    margin-top: 0;
+}
+
+.datapoles {
+    width: 50px;
+    margin: auto;
+    padding-left: 0;
+}
+
+.datapole {
+    display: inline-block;
+    width: 5px;
+    height: 20px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+}
+
+.datapole.DNE {
+    background-color: grey;
+}
+
+.datapole.Yes {
+    background-color: green;
+}
+
+.datapole.No {
+    background-color: red;
+}
+
+.datapole.Unsure {
+    background-color: purple;
+}
+
+#datasets > tr > th {
+    text-align: center;
+}
