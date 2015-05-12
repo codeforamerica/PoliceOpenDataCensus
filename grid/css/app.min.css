@@ -57,19 +57,19 @@ body {
 }
 
 .datapole.DNE {
-    background-color: grey;
+    background-color: silver;
 }
 
 .datapole.Yes {
-    background-color: green;
+    background-color: lime green;
 }
 
 .datapole.No {
-    background-color: red;
+    background-color: navy;
 }
 
 .datapole.Unsure {
-    background-color: purple;
+    background-color: teal;
 }
 
 #datasets > tr > th {
