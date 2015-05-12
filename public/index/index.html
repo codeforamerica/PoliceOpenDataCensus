@@ -70,7 +70,7 @@
         </div>
     </div>
     <script id="department-template" type="text/x-handlebars-template">
-        <li><a href="#" onClick="filterByDepartment('{{City}}')">{{City}}</a></li>
+        <li><a href="#" onClick="filterByDepartment('{{Department}}')">{{Department}}</a></li>
     </script>
     <script id="datatype-template" type="text/x-handlebars-template">
         <li><a href="#" onClick="filterByDatatype('{{[Type of Data]}}' )">{{[Type of Data]}}</a></li>
@@ -78,7 +78,7 @@
     <script id="card-template" type="text/x-handlebars-template">
         <div class="panel panel-default">
             <div class="panel-heading department-title-heading">
-                <h1 class="department-title">{{City}} – {{"Type of Data"}}</h1>
+                <h1 class="department-title">{{Department}} – {{"Type of Data"}}</h1>
             </div>
             <div class="panel-body">
                 <p><b>Description: </b>{{Description}}</p>
@@ -87,7 +87,7 @@
                     <div class="col-sm-4">
                         <div class="row">
                             <div class="col-xs-12">
-                                <p><b>Machine Readable: </b>{{"Machine Readable?"}}</p>
+                                <p><b>Machine Readable: </b>{{"Data is machine readable"}}</p>
                             </div>
                         </div>
                         <div class="row">

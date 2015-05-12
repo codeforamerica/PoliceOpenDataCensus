@@ -9,17 +9,17 @@
  var allRows = [];
 
  function showInfo(data, tabletop) {
-     allRows = _.sortBy(tabletop.sheets("Completed Detailed Data").all(), "City");
+     allRows = _.sortBy(tabletop.sheets("Completed Detailed Data").all(), "Department");
 
      updateCards(allRows);
 
      updateDepartments(_.chain(allRows)
          .map(
              function(row) {
-                 return row["City"]
-             }).unique().map(function(city) {
+                 return row["Department"]
+             }).unique().map(function(department) {
              return {
-                 City: city
+                 Department: department
              }
          }).value()
      );
@@ -63,7 +63,7 @@
  function filterByDepartment(department) {
      clearCards();
      updateCards(_.filter(allRows, function(row) {
-         return row["City"] === department;
+         return row["Department"] === department;
      }))
  }
 
@@ -82,7 +82,7 @@
  function filterByMachineReadable(machineReadable) {
      clearCards();
      updateCards(_.filter(allRows, function(row) {
-         return machineReadable ? row["Machine Readable?"] === "Yes" : row["Machine Readable?"] === "No";
+         return machineReadable ? row["Data is machine readable"] === "Yes" : row["Data is machine readable"] === "No";
      }))
  }
 
