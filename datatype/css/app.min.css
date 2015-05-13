@@ -1,0 +1,13 @@
+.department-title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: white;
+}
+
+.panel-default > .department-title-heading {
+    background-color: mediumblue;
+}
+
+.clickable {
+    cursor: pointer;
+}
