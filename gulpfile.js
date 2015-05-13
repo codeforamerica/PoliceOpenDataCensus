@@ -47,6 +47,9 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
     var bowerWoff = gulp.src(lib.ext('woff').files)
         .pipe(gulp.dest('out/common/fonts'));
 
+    var commonCss = gulp.src('./public/common/css/**.css')
+        .pipe(gulp.dest('out/common/css'));
+
     return merge(underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
 
@@ -59,7 +62,7 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
         return target.pipe(inject(series(bowerJs, customJs), {
                 ignorePath: '/out/'
             }))
-            .pipe(inject(series(bowerCss, customCss), {
+            .pipe(inject(series(bowerCss, commonCss, customCss), {
                 ignorePath: '/out/'
             }))
             .pipe(gulp.dest('out/'))
@@ -97,6 +100,9 @@ gulp.task('buildProd', ['bower'], function() {
     var bowerWoff = gulp.src(lib.ext('woff').files)
         .pipe(gulp.dest('PoliceOpenDataCensus/common/fonts'));
 
+    var commonCss = gulp.src('./public/common/css/**.css')
+        .pipe(gulp.dest('PoliceOpenDataCensus/common/css'));
+
     return merge(underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
 
@@ -110,7 +116,7 @@ gulp.task('buildProd', ['bower'], function() {
             .pipe(gulp.dest('PoliceOpenDataCensus/' + module + '/css'));
 
         return target.pipe(inject(series(bowerJs, customJs)))
-            .pipe(inject(series(bowerCss, customCss)))
+            .pipe(inject(series(bowerCss, commonCss, customCss)))
             .pipe(gulp.dest('PoliceOpenDataCensus/'))
             .pipe(connect.reload());
     }));
