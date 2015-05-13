@@ -14,6 +14,7 @@ var connect = require('gulp-connect');
 var print = require('gulp-print');
 var underscore = require('underscore');
 var merge = require('merge-stream');
+var install = require("gulp-install");
 
 var modules = ["index", "grid"];
 
@@ -25,11 +26,16 @@ gulp.task('bower', function() {
     return bower().pipe(gulp.dest('bower_components/'))
 });
 
+gulp.task('npm', function() {
+    return gulp.src(['./package.json'])
+        .pipe(install());
+});
+
 gulp.task('clean', function() {
     return del.sync(['out/']);
 });
 
-gulp.task('buildDev', ['bower', "clean"], function() {
+gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
     var lib = prepBower();
 
     var bowerJs = gulp.src(lib.ext('js').files)
@@ -41,7 +47,7 @@ gulp.task('buildDev', ['bower', "clean"], function() {
     var bowerWoff = gulp.src(lib.ext('woff').files)
         .pipe(gulp.dest('out/common/fonts'));
 
-    underscore.each(modules, function(module) {
+    return merge(underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
 
         var customJs = gulp.src('./public/' + module + '/js/**.js')
@@ -50,7 +56,7 @@ gulp.task('buildDev', ['bower', "clean"], function() {
         var customCss = gulp.src('./public/' + module + '/css/**.css')
             .pipe(gulp.dest('out/' + module + '/css'));
 
-        target.pipe(inject(series(bowerJs, customJs), {
+        return target.pipe(inject(series(bowerJs, customJs), {
                 ignorePath: '/out/'
             }))
             .pipe(inject(series(bowerCss, customCss), {
@@ -58,11 +64,11 @@ gulp.task('buildDev', ['bower', "clean"], function() {
             }))
             .pipe(gulp.dest('out/'))
             .pipe(connect.reload());
-    });
+    }));
 });
 
 gulp.task('watch', ['buildDev'], function() {
-    gulp.watch("public/**/*", ['buildDev']);
+    return gulp.watch("public/**/*", ['buildDev']);
 });
 
 gulp.task('connect', function() {
