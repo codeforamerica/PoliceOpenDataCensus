@@ -27,7 +27,7 @@
          .map(function(datasets, department) {
              var row = {
                  department: department,
-                 departmentHref: URI().filename("").search({
+                 departmentHref: URI().filename("datasets.html").search({
                      "department": department
                  }).toString(),
                  datasets: []
@@ -45,7 +45,7 @@
                          bulk: foundDataset["Available in bulk"],
                          fresh: foundDataset["Up-to-date"],
                          incident: foundDataset["Incident-level data"],
-                         datasetHref: URI().filename("").search({
+                         datasetHref: URI().filename("datasets.html").search({
                              "department": row["department"],
                              "datatype": foundDataset["Type of Data"]
                          }).toString()
@@ -77,9 +77,7 @@
      var datatypes = _.chain(allTypes).map(function(type) {
              return {
                  "datatype": type,
-                 "datatypeHref": URI().filename("").search({
-                     "datatype": type
-                 }).toString()
+                 "datatypeHref": URI().filename(type.replace(/ /g, '') + ".html").toString()
              }
          })
          .unique()

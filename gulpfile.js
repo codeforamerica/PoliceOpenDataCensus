@@ -16,7 +16,7 @@ var underscore = require('underscore');
 var merge = require('merge-stream');
 var install = require("gulp-install");
 
-var modules = ["index", "grid"];
+var modules = ["datasets", "grid", "datatype"];
 
 gulp.task('default', ["bower", "clean", "buildDev"]);
 

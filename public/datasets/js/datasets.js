@@ -22,27 +22,6 @@
      } else {
          updateCards(allRows);
      }
-
-     updateDepartments(_.chain(allRows)
-         .map(
-             function(row) {
-                 return row["Department"]
-             }).unique().map(function(department) {
-             return {
-                 Department: department
-             }
-         }).value()
-     );
-
-     updateTypesOfData(_.chain(allRows)
-         .map(
-             function(row) {
-                 return row["Type of Data"];
-             }).unique().map(function(type) {
-             return {
-                 "Type of Data": type
-             }
-         }).value())
  }
 
  function updateCards(rows, filters) {
@@ -80,16 +59,6 @@
      }
  }
 
- function updateDepartments(departments) {
-     var source = $("#department-template").html();
-     var template = Handlebars.compile(source);
-
-     $.each(departments, function(i, department) {
-         var html = template(department);
-         $(html).appendTo("#departments");
-     })
- }
-
  function clearCards() {
      $("#cards").empty();
  }
@@ -114,14 +83,4 @@
      updateCards(_.filter(allRows, function(row) {
          return machineReadable ? row["Data is machine readable"] === "Yes" : row["Data is machine readable"] === "No";
      }))
- }
-
- function updateTypesOfData(types) {
-     var source = $("#datatype-template").html();
-     var template = Handlebars.compile(source);
-
-     $.each(types, function(i, type) {
-         var html = template(type);
-         $(html).appendTo("#datatypes");
-     })
  }
