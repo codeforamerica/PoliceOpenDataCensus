@@ -70,7 +70,7 @@
          })
          .value();
 
-
+     $('[data-toggle="tooltip"]').tooltip()
  }
 
  function setupDatatypes(allTypes) {
