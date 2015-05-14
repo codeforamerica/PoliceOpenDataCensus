@@ -15,6 +15,7 @@ var print = require('gulp-print');
 var underscore = require('underscore');
 var merge = require('merge-stream');
 var install = require("gulp-install");
+var livereload = require("gulp-livereload");
 
 var modules = ["datasets", "grid", "datatype"];
 
@@ -71,6 +72,7 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
 });
 
 gulp.task('watch', ['buildDev'], function() {
+    var server = livereload ();
     return gulp.watch("public/**/*", ['buildDev']);
 });
 
