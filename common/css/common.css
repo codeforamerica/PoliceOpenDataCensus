@@ -29,6 +29,12 @@ body {
 .main {
     padding: 20px;
 }
+a {
+    word-wrap: break-word;
+}
+p{
+  word-wrap: break-word;  
+}
 
 @media (min-width: 768px) {
     .main {
