@@ -15,7 +15,6 @@ var print = require('gulp-print');
 var underscore = require('underscore');
 var merge = require('merge-stream');
 var install = require("gulp-install");
-var livereload = require("gulp-livereload");
 
 var modules = ["datasets", "grid", "datatype"];
 
@@ -72,7 +71,6 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
 });
 
 gulp.task('watch', ['buildDev'], function() {
-    var server = livereload ();
     return gulp.watch("public/**/*", ['buildDev']);
 });
 
@@ -124,8 +122,10 @@ gulp.task('buildProd', ['bower'], function() {
     }));
 });
 
-
-gulp.task('gh-pages', ["buildProd"], function() {
+gulp.task ('clean-publish', function() {
+    return del.sync(['.publish/']);
+});
+gulp.task('gh-pages', ["buildProd", "clean-publish"], function() {
     return gulp.src('./PoliceOpenDataCensus/**/*')
         .pipe(ghPages());
 });
