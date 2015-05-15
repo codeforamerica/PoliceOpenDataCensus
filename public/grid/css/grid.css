@@ -73,3 +73,7 @@
 .key ul li.Unsure {
     border-left-color: blue;
 }
+
+.key img {
+    padding-bottom: 10px;
+}

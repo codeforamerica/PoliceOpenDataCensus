@@ -59,6 +59,10 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
         var customCss = gulp.src('./public/' + module + '/css/**.css')
             .pipe(gulp.dest('out/' + module + '/css'));
 
+        var images = gulp.src('./public/' + module + '/img/**.*')
+            .pipe(gulp.dest('out/' + module + '/img'));
+
+
         return target.pipe(inject(series(bowerJs, customJs), {
                 ignorePath: '/out/'
             }))
@@ -115,6 +119,11 @@ gulp.task('buildProd', ['bower'], function() {
             .pipe(concat('app.min.css'))
             .pipe(gulp.dest('PoliceOpenDataCensus/' + module + '/css'));
 
+
+        var images = gulp.src('./public/' + module + '/img/**.*')
+            .pipe(gulp.dest('PoliceOpenDataCensus/' + module + '/img'));
+
+
         return target.pipe(inject(series(bowerJs, customJs)))
             .pipe(inject(series(bowerCss, commonCss, customCss)))
             .pipe(gulp.dest('PoliceOpenDataCensus/'))
@@ -122,10 +131,10 @@ gulp.task('buildProd', ['bower'], function() {
     }));
 });
 
-gulp.task ('clean-publish', function() {
+gulp.task('cleanPublish', function() {
     return del.sync(['.publish/']);
 });
-gulp.task('gh-pages', ["buildProd", "clean-publish"], function() {
+gulp.task('gh-pages', ["buildProd", "cleanPublish"], function() {
     return gulp.src('./PoliceOpenDataCensus/**/*')
         .pipe(ghPages());
 });
