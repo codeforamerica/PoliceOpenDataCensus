@@ -116,11 +116,13 @@
              });
              return row;
          })
+         .sortBy("department")
          .each(function(row) {
              var html = departmentTemplate(row);
              $("#departments").append(html);
          })
-         .value();
+
+     .value();
 
      $('[data-toggle="tooltip"]').tooltip()
  }
