@@ -65,6 +65,7 @@
          .map(function(datasets, department) {
              var row = {
                  department: department,
+                 state: datasets[0]["State"],
                  departmentHref: URI().filename("datasets.html").search({
                      "department": department
                  }).toString(),
