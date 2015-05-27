@@ -50,6 +50,9 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
     var commonCss = gulp.src('./public/common/css/**.css')
         .pipe(gulp.dest('out/common/css'));
 
+    var commonJs = gulp.src('./public/common/js/**.js')
+        .pipe(gulp.dest('out/common/js'));
+
     return merge(underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
 
@@ -63,7 +66,7 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
             .pipe(gulp.dest('out/' + module + '/img'));
 
 
-        return target.pipe(inject(series(bowerJs, customJs), {
+        return target.pipe(inject(series(bowerJs, commonJs, customJs), {
                 ignorePath: '/out/'
             }))
             .pipe(inject(series(bowerCss, commonCss, customCss), {
@@ -115,6 +118,12 @@ gulp.task('buildProd', ['bower'], function() {
 
     var commonCss = gulp.src('./public/common/css/**.css')
         .pipe(gulp.dest('PoliceOpenDataCensus/common/css'));
+    
+    var commonJs = gulp.src('./public/common/js/**.js')
+        .pipe(concat('common.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('PoliceOpenDataCensus/common/js'));
+
 
     return merge(underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
@@ -133,7 +142,7 @@ gulp.task('buildProd', ['bower'], function() {
             .pipe(gulp.dest('PoliceOpenDataCensus/' + module + '/img'));
 
 
-        return target.pipe(inject(series(bowerJs, customJs)))
+        return target.pipe(inject(series(bowerJs, commonJs, customJs)))
             .pipe(inject(series(bowerCss, commonCss, customCss)))
             .pipe(inject(gulp.src(['./public/common/partials/nav.html']), {
                 starttag: '<!-- inject:nav:html -->',

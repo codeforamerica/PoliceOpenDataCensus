@@ -6,6 +6,8 @@
      });
  });
 
+
+
  var allRows = [];
 
  function showInfo(data, tabletop) {
@@ -31,15 +33,35 @@
 
      _.chain(rows)
          .filter(function(row) {
-             return _.all(filters, function(filter) {
-                 return filter(row);
-             });
-         }).map(function(row) {
+                 return _.all(filters, function(filter) {
+                     return filter(row);
+                 });
+        })
+         .map(function(row) {
+
+            row.free = row["Data is freely available online"];
+            row.machine = row["Data is machine readable"];
+            row.context = row["Context is provided"];
+            row.bulk = row["Available in bulk"];
+            row.fresh = row["Up-to-date"];
+            row.incident = row["Incident-level data"];
+                 
+
+             row.freeCaption = captions.free[row.free];
+             row.machineCaption = captions.machine[row.machine];
+             row.contextCaption = captions.context[row.context];
+             row.bulkCaption = captions.bulk[row.bulk];
+             row.freshCaption = captions.fresh[row.fresh];
+             row.incidentCaption = captions.incident[row.incident];
 
              var html = template(row);
-             $("#cards").append(html);
-         });
+            $("#cards").append(html);
+            $('[data-toggle="tooltip"]').tooltip();  
+        });
  }
+
+
+
 
  function buildDepartmentFilter(department) {
      if (!department) {
