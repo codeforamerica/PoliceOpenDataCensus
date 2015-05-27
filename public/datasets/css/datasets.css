@@ -12,9 +12,9 @@
 }
 ul.availability.icons {
 	margin:20px;
-  	padding-left: 0px;
+  padding-left: 0px;
  	list-style:none;
-  	width: 100%;
+  width: 100%;
 }
 ul.icons li{
 	display: inline-block;
@@ -27,6 +27,7 @@ ul.icons li{
 
 ul.availability.icons li, i.fa {
   	background-color: #CCC;
+    color: #f9f9f9;
   	padding: 3px;
   	float: left;
   	-webkit-border-radius: 2px;
@@ -43,4 +44,16 @@ ul.availability.icons li, i.fa {
 }
 .tooltip{
 	display: block;
+}
+
+.datapole.Yes {
+    background-color: limegreen;
+}
+
+.datapole.No {
+    background-color: navy;
+}
+
+.datapole.Unsure {
+    background-color: blue;
 }
