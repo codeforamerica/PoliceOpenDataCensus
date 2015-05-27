@@ -69,6 +69,15 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
             .pipe(inject(series(bowerCss, commonCss, customCss), {
                 ignorePath: '/out/'
             }))
+            //OKAY so bummer, it doesn't sound like gulp-inject supports dynamic
+            //injection tags so we'll need to hard code these for now. Hopefully
+            //there won't be more than just the nav.
+            .pipe(inject(gulp.src(['./public/common/partials/nav.html']), {
+                starttag: '<!-- inject:nav:html -->',
+                transform: function (filePath, file) {
+                    return file.contents.toString('utf8')
+                  }
+            }))
             .pipe(gulp.dest('out/'))
             .pipe(connect.reload());
     }));
@@ -126,6 +135,12 @@ gulp.task('buildProd', ['bower'], function() {
 
         return target.pipe(inject(series(bowerJs, customJs)))
             .pipe(inject(series(bowerCss, commonCss, customCss)))
+            .pipe(inject(gulp.src(['./public/common/partials/nav.html']), {
+                starttag: '<!-- inject:nav:html -->',
+                transform: function (filePath, file) {
+                    return file.contents.toString('utf8')
+                  }
+            }))
             .pipe(gulp.dest('PoliceOpenDataCensus/'))
             .pipe(connect.reload());
     }));
