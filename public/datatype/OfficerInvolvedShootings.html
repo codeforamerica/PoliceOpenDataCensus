@@ -43,49 +43,8 @@
     <script id="datatype-template" type="text/x-handlebars-template">
         <li><a href="#" onClick="filterByDatatype('{{[Type of Data]}}' )">{{[Type of Data]}}</a></li>
     </script>
-    <script id="card-template" type="text/x-handlebars-template">
-        <div class="panel panel-default">
-            <div class="panel-heading department-title-heading">
-                <h1 class="department-title">{{Department}}, {{State}} – {{"Type of Data"}}</h1>
-            </div>
-            <div class="panel-body">
-                <p><b>Description: </b>{{Description}}</p>
-                <p><b>Content Available: </b>{{"Content Available"}}</p>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <p><b>Machine Readable: </b>{{"Data is machine readable"}}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <p><b>Update Frequency: </b>{{"Update frequency"}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Fields: </b>{{"Fields Included"}}</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <p><b>Download Formats: </b>{{"Available downloads"}}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <p><b>Data timeline: </b>{{"Data timeline"}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href={{Link}}>{{Link}}</a>
-                </br>
-                <small>This summary last updated on: {{"Row last updated"}}</small>
-            </div>
-        </div>
-        </script>
+    <!-- inject:templates:html -->
+    <!-- endinject -->
         <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
