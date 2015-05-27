@@ -33,7 +33,7 @@ a {
     word-wrap: break-word;
 }
 p{
-  word-wrap: break-word;  
+  word-wrap: break-word;
 }
 
 @media (min-width: 768px) {
@@ -60,4 +60,51 @@ p{
 
 .datapole.Unsure {
     background-color: blue;
+}
+
+ul.availability.icons {
+	margin:20px;
+  padding-left: 0px;
+ 	list-style:none;
+  width: 100%;
+}
+ul.icons li{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	margin-left: -2px;
+}
+
+ul.availability.icons li, i.fa {
+  	background-color: #CCC;
+    color: #f9f9f9;
+  	padding: 3px;
+  	float: left;
+  	-webkit-border-radius: 2px;
+  	-moz-border-radius: 2px;
+  	border-radius: 3px;
+}
+
+.data-icons ul{
+	padding-left: 0px;
+	line-height: 20px;
+  	text-align: left;
+  	vertical-align: top;
+	line-height: 20px;
+}
+
+.department-title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: white;
+}
+
+.panel-default > .department-title-heading {
+    background-color: navy;
+}
+
+.clickable {
+    cursor: pointer;
 }
