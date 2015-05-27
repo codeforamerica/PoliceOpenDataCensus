@@ -13,22 +13,6 @@
     border-radius: 1px;
 }
 
-.datapole.DNE {
-    background-color: silver;
-}
-
-.datapole.Yes {
-    background-color: limegreen;
-}
-
-.datapole.No {
-    background-color: navy;
-}
-
-.datapole.Unsure {
-    background-color: blue;
-}
-
 #datasets > tr > th {
     text-align: center;
 }
