@@ -46,3 +46,18 @@ p{
 .main .page-header {
     margin-top: 0;
 }
+.datapole.DNE {
+    background-color: silver;
+}
+
+.datapole.Yes {
+    background-color: limegreen;
+}
+
+.datapole.No {
+    background-color: navy;
+}
+
+.datapole.Unsure {
+    background-color: blue;
+}

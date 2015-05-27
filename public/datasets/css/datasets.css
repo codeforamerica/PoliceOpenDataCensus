@@ -46,14 +46,3 @@ ul.availability.icons li, i.fa {
 	display: block;
 }
 
-.datapole.Yes {
-    background-color: limegreen;
-}
-
-.datapole.No {
-    background-color: navy;
-}
-
-.datapole.Unsure {
-    background-color: blue;
-}
