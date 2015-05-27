@@ -38,6 +38,7 @@
 
              var html = template(row);
              $("#cards").append(html);
+             $('[data-toggle="tooltip"]').tooltip();  
          });
  }
 

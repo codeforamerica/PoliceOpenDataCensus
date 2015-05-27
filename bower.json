@@ -15,6 +15,7 @@
     "bootstrap": "~3.3.4",
     "handlebars": "~3.0.3",
     "underscore": "~1.8.3",
-    "uri.js": "~1.15.1"
+    "uri.js": "~1.15.1",
+    "components-font-awesome": "~4.3.0"
   }
 }
