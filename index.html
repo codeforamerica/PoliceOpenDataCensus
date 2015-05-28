@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
+    <title>Police Open Data Census</title>
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -18,6 +20,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
   <body>
     <!-- inject:nav:html -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -52,10 +55,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 main">
           <div class="alert alert-info" role="alert">
-            <p>This is a census of currently available open datasets about police
-              interactions with citizens in the US, including Use of Force, Officer-Involved
-              Shootings, and Complaints Against Police. For crime data, see the Open Knowledge
-              Foundation's
+            <p>This is a census of currently available open datasets about police interactions with citizens in the US, including Use of Force, Officer-Involved Shootings, and Complaints Against Police. For crime data, see the Open Knowledge Foundation's
               <a href="http://us-city.census.okfn.org/">US City Open Data Census</a>.</p>
             <p>Created by the 2015 Code for America Fellows for Indianapolis
               <a href="http://www.codeforamerica.org/governments/indianapolis/">www.codeforamerica.org/governments/indianapolis/</a></p>
@@ -95,29 +95,35 @@
       </div>
     </div>
     <script id="department-template" type="text/x-handlebars-template">
-      <tr> <td> <a href="{{departmentHref}}"> {{department}}, {{state}} </a> </td> {{#each this.datasets}} <td> <a href="{{datasetHref}}"> <ul class="datapoles"> <li class="datapole {{free}}" data-toggle="tooltip" title="{{freeCaption}}"></li> <li
-class="datapole {{machine}}"
-data-toggle="tooltip"
-title="{{machineCaption}}"></li> <li
-class="datapole {{context}}"
-data-toggle="tooltip"
-title="{{contextCaption}}"></li> <li class="datapole {{bulk}}" data-toggle="tooltip" title="{{bulkCaption}}"></li> <li class="datapole {{fresh}}" data-toggle="tooltip" title="{{freshCaption}}"></li> <li
-class="datapole {{incident}}"
-data-toggle="tooltip"
-title="{{incidentCaption}}"></li> </ul> </a> </td> {{/each}} </tr>
+      <tr>
+        <td> <a href="{{departmentHref}}"> {{department}}, {{state}} </a> </td> {{#each this.datasets}}
+        <td>
+          <a href="{{datasetHref}}">
+            <ul class="datapoles">
+              <li class="datapole {{free}}" data-toggle="tooltip" title="{{freeCaption}}"></li>
+              <li class="datapole {{machine}}" data-toggle="tooltip" title="{{machineCaption}}"></li>
+              <li class="datapole {{context}}" data-toggle="tooltip" title="{{contextCaption}}"></li>
+              <li class="datapole {{bulk}}" data-toggle="tooltip" title="{{bulkCaption}}"></li>
+              <li class="datapole {{fresh}}" data-toggle="tooltip" title="{{freshCaption}}"></li>
+              <li class="datapole {{incident}}" data-toggle="tooltip" title="{{incidentCaption}}"></li>
+            </ul>
+          </a>
+        </td> {{/each}} </tr>
     </script>
     <script id="dataset-template" type="text/x-handlebars-template">
-      <tr> <th>Department</th> {{#each this}} <th> <a href="{{datatypeHref}}"> {{datatype}} </a></th> {{/each}} </tr>
+      <tr>
+        <th>Department</th> {{#each this}}
+        <th> <a href="{{datatypeHref}}"> {{datatype}} </a></th> {{/each}} </tr>
     </script>
     <script>
-      (function (i, s, o, g, r, a, m) {
+      (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        },
-        i[r].l = 1 * new Date();
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+          },
+          i[r].l = 1 * new Date();
         a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
+          m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
@@ -132,4 +138,5 @@ title="{{incidentCaption}}"></li> </ul> </a> </td> {{/each}} </tr>
     <script src="/PoliceOpenDataCensus/grid/js/app.min.js"></script>
     <!-- endinject -->
   </body>
+
 </html>
