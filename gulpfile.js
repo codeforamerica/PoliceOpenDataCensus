@@ -53,6 +53,11 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
     var commonJs = gulp.src('./public/common/js/**.js')
         .pipe(gulp.dest('out/common/js'));
 
+
+    gulp.src('./public/common/favicon.ico')
+      .pipe(gulp.dest('out/'));
+
+
     return merge(underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
 
@@ -134,6 +139,8 @@ gulp.task('buildProd', ['bower'], function() {
         .pipe(uglify())
         .pipe(gulp.dest('PoliceOpenDataCensus/common/js'));
 
+    gulp.src('./public/common/favicon.ico')
+      .pipe(gulp.dest('PoliceOpenDataCensus/'));
 
     return merge(underscore.map(modules, function(module) {
         var target = gulp.src('./public/' + module + '/*.html');
