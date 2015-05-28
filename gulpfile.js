@@ -77,6 +77,7 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
             .pipe(inject(series(bowerCss, commonCss, customCss), {
                 ignorePath: '/out/'
             }))
+            .pipe(inject(bowerWoff, {ignorePath:'/out/'}))
             //OKAY so bummer, it doesn't sound like gulp-inject supports dynamic
             //injection tags so we'll need to hard code these for now. Hopefully
             //there won't be more than just the nav.
@@ -161,6 +162,7 @@ gulp.task('buildProd', ['bower'], function() {
 
         return merge([target.pipe(inject(series(bowerJs, commonJs, customJs)))
             .pipe(inject(series(bowerCss, commonCss, customCss)))
+            .pipe(inject(bowerWoff))
             .pipe(inject(gulp.src(['./public/common/partials/nav.html']), {
                 starttag: '<!-- inject:nav:html -->',
                 transform: function (filePath, file) {
