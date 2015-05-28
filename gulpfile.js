@@ -16,7 +16,7 @@ var underscore = require('underscore');
 var merge = require('merge-stream');
 var install = require("gulp-install");
 
-var modules = ["datasets", "grid", "datatype"];
+var modules = ["datasets", "grid", "datatype", "recomendations"];
 
 gulp.task('default', ["bower", "clean", "buildDev"]);
 
@@ -66,7 +66,7 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
             .pipe(gulp.dest('out/' + module + '/img'));
 
 
-        return target.pipe(inject(series(bowerJs, commonJs, customJs), {
+        return merge([target.pipe(inject(series(bowerJs, commonJs, customJs), {
                 ignorePath: '/out/'
             }))
             .pipe(inject(series(bowerCss, commonCss, customCss), {
@@ -92,7 +92,7 @@ gulp.task('buildDev', ['npm', 'bower', "clean"], function() {
               }
             ))
             .pipe(gulp.dest('out/'))
-            .pipe(connect.reload());
+            .pipe(connect.reload()), images])
     }));
 });
 
@@ -152,7 +152,7 @@ gulp.task('buildProd', ['bower'], function() {
             .pipe(gulp.dest('PoliceOpenDataCensus/' + module + '/img'));
 
 
-        return target.pipe(inject(series(bowerJs, commonJs, customJs)))
+        return merge([target.pipe(inject(series(bowerJs, commonJs, customJs)))
             .pipe(inject(series(bowerCss, commonCss, customCss)))
             .pipe(inject(gulp.src(['./public/common/partials/nav.html']), {
                 starttag: '<!-- inject:nav:html -->',
@@ -171,7 +171,7 @@ gulp.task('buildProd', ['bower'], function() {
               }
             ))
             .pipe(gulp.dest('PoliceOpenDataCensus/'))
-            .pipe(connect.reload());
+            .pipe(connect.reload()), images])
     }));
 
 });
