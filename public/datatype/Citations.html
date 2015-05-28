@@ -45,6 +45,41 @@
                 <h1 class="department-title">{{Department}}, {{State}} – {{"Type of Data"}}</h1>
             </div>
             <div class="panel-body">
+               <div class="data-icons">
+                <p><b>Data Breakdown:</b></p>
+                    <ul class="availablilty icons">
+                        <a data-toggle="tooltip" title data-original-title="{{freeCaption}}">
+                            <li>
+                                <i class="fa fa-eye datapole {{free}}"></i>
+                            </li>
+                        </a>
+                        <a data-toggle="tooltip" title data-original-title="{{machineCaption}}">
+                            <li>
+                                <i class="fa fa-keyboard-o datapole {{machine}}"></i>
+                            </li>
+                        </a>
+                        <a data-toggle="tooltip" title data-original-title="{{contextCaption}}">
+                            <li>
+                                <i class="fa fa-cog datapole {{context}}"></i>
+                            </li>
+                        </a>
+                        <a data-toggle="tooltip" title data-original-title="{{bulkCaption}}">
+                            <li>
+                                <i class="fa fa-files-o datapole {{bulk}}"></i>
+                            </li>
+                        </a>
+                        <a data-toggle="tooltip" title data-original-title="{{freshCaption}}">
+                            <li>
+                                <i class="fa fa-clock-o datapole {{fresh}}"></i>
+                            </li>
+                        </a>
+                        <a data-toggle="tooltip" title data-original-title="{{incidentCaption}}">
+                            <li>
+                                <i class="fa fa-list datapole {{incident}}"></i>
+                             </li>
+                        </a>
+                    </ul>
+                </div>
                 <p><b>Description: </b>{{Description}}</p>
                 <p><b>Content Available: </b>{{"Content Available"}}</p>
                 <div class="row">
