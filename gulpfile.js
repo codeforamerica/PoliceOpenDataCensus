@@ -247,7 +247,8 @@ gulp.task('readme', function() {
   console.log("HOW:");
   console.log("The Census is built on a Google Spreadsheet integration though tabletop.js.");
   console.log("Feedback and suggested additions to the current data are more than welcome");
-  console.log("at indy@codeforamerica.org.");
+  console.log("at" + " indy@codeforamerica.org".red + " and/or our google form" + " bit.ly/1KMFbxZ".red)
+  console.log();
   console.log("The site is otherwise a fairly bogstandard bootstrap/jquery build. All that");
   console.log("should be required to get the development environment up is:");
   console.log();
