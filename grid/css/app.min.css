@@ -47,17 +47,21 @@
 }
 
 .key ul li.Yes {
-    border-left-color: limegreen;
+    border-left-color: #8BDD3A;
 }
 
 .key ul li.No {
-    border-left-color: navy;
+    border-left-color: #DD3D3A;
 }
 
 .key ul li.Unsure {
-    border-left-color: blue;
+    border-left-color: #39BEFA  ;
 }
 
 .key img {
     padding-bottom: 10px;
+}
+
+.cta-button {
+  font-size: 30px;
 }
