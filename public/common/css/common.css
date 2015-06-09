@@ -53,15 +53,15 @@ p {
 }
 
 .datapole.Yes {
-    background-color: limegreen;
+    background-color: #8BDD3A;
 }
 
 .datapole.No {
-    background-color: navy;
+    background-color: #DD3D3A;
 }
 
 .datapole.Unsure {
-    background-color: blue;
+    background-color: #39BEFA;
 }
 
 ul.availability.icons {
